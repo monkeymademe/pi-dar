@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pi-Dar</title>
+  <link rel="icon" href="mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <canvas id="mark" class="mark" width="88" height="88" aria-hidden="true"></canvas>
+      <div>
+        <h1>Pi-Dar</h1>
+        <p class="lede">The Presto radar screen that connects to Pi-Sky flight tracking system.  Its also possible to simulate traffic. Saving here changes the screen on the next sweep.</p>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="scope-wrap">
+      <canvas id="scope" width="480" height="480" aria-label="Pi-Dar scope"></canvas>
+      <p id="caption">Tap a blip, or a row, for the flight card.</p>
+      <article id="detail" hidden>
+        <div class="board-top">
+          <div>
+            <h2 id="detail-call"></h2>
+            <p id="detail-meta"></p>
+          </div>
+        </div>
+        <div class="board-route">
+          <div class="board-port" id="detail-from"></div>
+          <div class="board-port" id="detail-to"></div>
+        </div>
+        <div class="board-grid" id="detail-facts"></div>
+        <p id="detail-note"></p>
+      </article>
+      <table>
+        <caption class="hint">Aircraft inside the selected range</caption>
+        <thead>
+          <tr><th>Callsign</th><th>Dist</th><th>Brg</th><th>Alt</th><th>Hdg</th><th>GS</th></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </section>
+    <section class="panel">
+      <form id="config">
+        <h2>Source</h2>
+        <label class="choice"><input type="radio" name="mode" value="simulate" checked> Simulated traffic</label>
+        <label class="choice"><input type="radio" name="mode" value="pisky"> Pi-Sky receiver</label>
+        <label>Pi-Sky address
+          <input id="pisky_url" name="pisky_url" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="http://192.168.1.20:5050">
+        </label>
+        <p class="hint">Use the Pi-Sky home address, usually port 5050. This page reads <span class="mono">/api/config</span> for the antenna position, <span class="mono">/api/dump1090/aircraft.json</span> for the contacts, and one snapshot of <span class="mono">/events</span> for the route on a tapped flight.</p>
+        <div class="row">
+          <label>Antenna latitude
+            <input id="receiver_lat" name="receiver_lat" type="number" step="0.00001" min="-90" max="90" required>
+          </label>
+          <label>Antenna longitude
+            <input id="receiver_lon" name="receiver_lon" type="number" step="0.00001" min="-180" max="180" required>
+          </label>
+        </div>
+        <p class="hint">These coordinates are the centre of the simulated scope. In Pi-Sky mode the centre comes from that machine when the link is up.</p>
+        <div class="row">
+          <label>Range
+            <select id="range_km" name="range_km">
+              <option>10</option>
+              <option>25</option>
+              <option>50</option>
+              <option>100</option>
+              <option>150</option>
+              <option>250</option>
+            </select>
+          </label>
+          <label>Simulated aircraft
+            <input id="sim_count" name="sim_count" type="number" min="1" max="24" step="1">
+          </label>
+        </div>
+        <label>Callsigns on the scope
+          <input id="max_labels" name="max_labels" type="number" min="0" max="12" step="1">
+        </label>
+        <fieldset class="themes">
+          <legend>Theme</legend>
+          <label class="choice"><input type="radio" name="theme" value="phosphor" checked><span class="swatch phosphor"></span> Phosphor</label>
+          <label class="choice"><input type="radio" name="theme" value="amber"><span class="swatch amber"></span> Amber</label>
+          <label class="choice"><input type="radio" name="theme" value="arctic"><span class="swatch arctic"></span> Arctic</label>
+          <label class="choice"><input type="radio" name="theme" value="night"><span class="swatch night"></span> Night</label>
+          <label class="choice"><input type="radio" name="theme" value="day"><span class="swatch day"></span> Day</label>
+        </fieldset>
+        <div class="save-line">
+          <button type="submit">Save</button>
+          <span id="save-note" role="status"></span>
+        </div>
+      </form>
+      <div class="status">
+        <h2>Screen</h2>
+        <p id="screen-status">Waiting for the first picture.</p>
+        <p id="link-status"></p>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

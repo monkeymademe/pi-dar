@@ -1,0 +1,12 @@
+{
+  "http_host": "0.0.0.0",
+  "http_port": 80,
+  "mode": "simulate",
+  "pisky_url": "http://127.0.0.1:5050",
+  "receiver_lat": 52.52,
+  "receiver_lon": 13.405,
+  "range_km": 50,
+  "sim_count": 8,
+  "max_labels": 5,
+  "theme": "phosphor"
+}

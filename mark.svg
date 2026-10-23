@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" shape-rendering="crispEdges" role="img" aria-label="Pi-Dar">
+  <circle cx="44" cy="44" r="40" fill="#001208"/>
+  <circle cx="44" cy="44" r="40" fill="#1f8f4a"/>
+  <circle cx="44" cy="44" r="38" fill="#001208"/>
+  <circle cx="44" cy="44" r="26" fill="#145c32"/>
+  <circle cx="44" cy="44" r="24" fill="#001208"/>
+  <circle cx="44" cy="44" r="13" fill="#145c32"/>
+  <circle cx="44" cy="44" r="11" fill="#001208"/>
+  <path d="M44 7v74M7 44h74" stroke="#14663a" stroke-width="1"/>
+  <path d="M44 44 L44 8" stroke="#081e10" stroke-width="1"/>
+  <path d="M44 44 L49 8" stroke="#0c3018" stroke-width="1"/>
+  <path d="M44 44 L53 9" stroke="#145028" stroke-width="1"/>
+  <path d="M44 44 L58 12" stroke="#288240" stroke-width="1"/>
+  <path d="M44 44 L62 16" stroke="#5abe6e" stroke-width="1"/>
+  <path d="M44 44 L66 22" stroke="#aaffb4" stroke-width="1"/>
+  <path d="M44 44 L69 28" stroke="#e6ffeb" stroke-width="1"/>
+  <circle cx="62" cy="28" r="3" fill="#f4fff6"/>
+  <circle cx="44" cy="44" r="2" fill="#ffd56a"/>
+</svg>
